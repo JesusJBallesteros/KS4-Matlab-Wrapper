@@ -1,6 +1,5 @@
 import numpy as np
-# CUSTOMIZED file with specific settings for a project
-# No fundamental changes, only the DEFAULT values have been changed
+
 
 # Format for parameter specification:
 # parameter: {
@@ -127,7 +126,7 @@ EXTRA_PARAMETERS = {
 
     'nskip': {
         'gui_name': 'nskip', 'type': int, 'min': 1, 'max': np.inf,
-        'exclude': [], 'default': 5, 'step': 'preprocessing',
+        'exclude': [], 'default': 25, 'step': 'preprocessing',
         'description':
             """
             Batch stride for computing whitening matrix.
@@ -136,7 +135,7 @@ EXTRA_PARAMETERS = {
 
     'whitening_range': {
         'gui_name': 'whitening range', 'type': int, 'min': 1, 'max': np.inf,
-        'exclude': [], 'default': 16, 'step': 'preprocessing',
+        'exclude': [], 'default': 32, 'step': 'preprocessing',
         'description':
             """
             Number of nearby channels used to estimate the whitening matrix.
@@ -145,7 +144,7 @@ EXTRA_PARAMETERS = {
 
     'binning_depth': {
         'gui_name': 'binning_depth', 'type': float, 'min': 0, 'max': np.inf,
-        'exclude': [0], 'default': 10, 'step': 'preprocessing',
+        'exclude': [0], 'default': 5, 'step': 'preprocessing',
         'description':
             """
             For drift correction, vertical bin size in microns used for
@@ -155,7 +154,7 @@ EXTRA_PARAMETERS = {
 
     'sig_interp': {
         'gui_name': 'sig_interp', 'type': float, 'min': 0, 'max': np.inf,
-        'exclude': [0], 'default': 40, 'step': 'preprocessing',
+        'exclude': [0], 'default': 20, 'step': 'preprocessing',
         'description':
             """
             For drift correction, sigma for interpolation (spatial standard
@@ -168,7 +167,7 @@ EXTRA_PARAMETERS = {
     # NOTE: if left as None, will be set to `int(20 * settings['nt']/61)`
     'nt0min': {
         'gui_name': 'nt0min', 'type': int, 'min': 0, 'max': np.inf,
-        'exclude': [], 'default': 20, 'step': 'spike detection',
+        'exclude': [], 'default': None, 'step': 'spike detection',
         'description': 
             """
             Sample index for aligning waveforms, so that their minimum 
@@ -178,7 +177,7 @@ EXTRA_PARAMETERS = {
 
     'dmin': {
         'gui_name': 'dmin', 'type': float, 'min': 0, 'max': np.inf,
-        'exclude': [0], 'default': 50, 'step': 'spike detection',
+        'exclude': [0], 'default': None, 'step': 'spike detection',
         'description':
             """
             Vertical spacing of template centers used for spike detection,
@@ -268,7 +267,7 @@ EXTRA_PARAMETERS = {
 
     'Th_single_ch': {
         'gui_name': 'Th (single channel)', 'type': float, 'min': 0, 'max': np.inf,
-        'exclude': [0], 'default': 4.5, 'step': 'spike detection',
+        'exclude': [0], 'default': 6, 'step': 'spike detection',
         'description':
             """
             For single channel threshold crossings to compute universal-
@@ -280,7 +279,7 @@ EXTRA_PARAMETERS = {
     ### CLUSTERING
     'acg_threshold': {
         'gui_name': 'acg threshold', 'type': float, 'min': 0, 'max': np.inf,
-        'exclude': [0], 'default': 0.1, 'step': 'clustering',
+        'exclude': [0], 'default': 0.2, 'step': 'clustering',
         'description':
             """
             Fraction of refractory period violations that are allowed in the ACG 
@@ -290,7 +289,7 @@ EXTRA_PARAMETERS = {
 
     'ccg_threshold': {
         'gui_name': 'ccg threshold', 'type': float, 'min': 0, 'max': np.inf,
-        'exclude': [0], 'default': 0.15, 'step': 'clustering',
+        'exclude': [0], 'default': 0.25, 'step': 'clustering',
         'description':
             """
             Fraction of refractory period violations that are allowed in the CCG
@@ -321,7 +320,7 @@ EXTRA_PARAMETERS = {
     ### POSTPROCESSING
     'duplicate_spike_bins': {
         'gui_name': 'duplicate spike bins', 'type': int, 'min': 0, 'max': np.inf,
-        'exclude': [], 'default': 16, 'step': 'postprocessing',
+        'exclude': [], 'default': 15, 'step': 'postprocessing',
         'description':
             """
             Number of bins for which subsequent spikes from the same cluster are

@@ -135,7 +135,7 @@ command.script = "master_kilosort4.py"; % Our script that wraps the call to kilo
 command.s1 = " '"; % To introduce the necessary 's before the argument.
 command.s2 = "'"; % To introduce the necessary 's after the argument.
 command.var1 = string(input.KSpyenv_NGL); % var1 is the absolute path to the kilosort library in the python enviroment
-command.var2 = string(opt.FolderProcDataMat); % var2 is the absolute path where the .bin file has been created
+command.var2 = string(fullfile(opt.FolderProcDataMat, [opt.SavFileName, '.bin'])); %,  % var2 is the absolute path to the .bin file has been created
 command.var3 = string(opt.numChannels); % Give number of channels as string Will convert to int within python script)
 command.var4 = append(input.analysisCode, opt.KSchanMapFile); % Absolute path to the probe map.
 % command.var5 = string();
@@ -145,9 +145,9 @@ command.full = append(command.script, ...
     command.s1, command.var1, command.s2, ...
     command.s1, command.var2, command.s2, ...
     command.s1, command.var3, command.s2, ...
-    command.s1, command.var4, command.s2 ... % If you add more varX, this one needs a comma at the end, before the '...'
-    ... % Add more 'command.s1, command.varX, command.s2 ...' for new variables, and make sure you collect them in the python script
-    );
+    command.s1, command.var4, command.s2 ... % If you add more varX, this one needs a comma at the end, before '...'
+    ); % Add more 'command.s1, command.varX, command.s2 ...' for new variables, and make sure you collect them in the python script
+
 
 %% RUN
 % Move to the kilosort enviroment working directory
